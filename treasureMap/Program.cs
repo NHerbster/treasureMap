@@ -16,8 +16,10 @@ internal class Program
             Console.WriteLine("Veuillez saisir le chemin vers le fichier d'entrée : ");
             filePath = Console.ReadLine();
         }
+        string outputPath = filePath.Insert(filePath.Length - 4, "_output");
 
         Console.WriteLine($"Chemin saisi : {filePath}");
+        Console.WriteLine($"Le fichier de sortie sera : {outputPath}");
 
         StreamReader sr = new StreamReader(filePath);
         string line = sr.ReadLine();
@@ -85,5 +87,51 @@ internal class Program
         Console.WriteLine(treasureMap.ToString());
         Console.WriteLine("Appuyez sur une touche pour lancer la simulation.");
         Console.ReadLine();
+
+        int nbTurns = treasureMap.Adventurers.Select(a => a.MovementsList).Aggregate("", (max, cur) => max.Length > cur.Length ? max : cur).Length;
+        for (int i = 0; i < nbTurns; i++)
+        {
+            foreach (Adventurer adventurer in treasureMap.Adventurers)
+            {
+                if (adventurer.MovementsList.Length >= i + 1)
+                {
+                    switch (adventurer.MovementsList[i])
+                    {
+                        case 'A':
+                            Tile nextTile = null;
+                            switch (adventurer.Orientation)
+                            {
+                                case "N":
+                                    nextTile = treasureMap.GetTileByPos(adventurer.WidthPos, adventurer.HeightPos - 1);
+                                    break;
+                                case "S":
+                                    nextTile = treasureMap.GetTileByPos(adventurer.WidthPos, adventurer.HeightPos + 1);
+                                    break;
+                                case "E":
+                                    nextTile = treasureMap.GetTileByPos(adventurer.WidthPos + 1, adventurer.HeightPos);
+                                    break;
+                                case "O":
+                                    nextTile = treasureMap.GetTileByPos(adventurer.WidthPos - 1, adventurer.HeightPos);
+                                    break;
+                            }
+                            adventurer.ComputeAction(nextTile, treasureMap.GetTileByPos(adventurer.WidthPos, adventurer.HeightPos));
+                            break;
+                        case 'G':
+                        case 'D':
+                            adventurer.RotateAdventurer(adventurer.MovementsList[i]);
+                            break;
+                        default:
+                            Console.WriteLine($"Action {adventurer.MovementsList[i]} non reconnue pour l'aventurier {adventurer.Name}. Son tour a été passé.");
+                            break;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"Toutes les actions de {adventurer.Name} ont été effectuées.");
+                }
+            }
+        }
+
+        treasureMap.WriteOutputFile(outputPath);
     }
 }

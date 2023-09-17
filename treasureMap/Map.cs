@@ -101,5 +101,35 @@ namespace treasureMap
 
             return sb.ToString();
         }
+
+        /// <summary>
+        /// Ecrit le fichier de sortie
+        /// </summary>
+        /// <param name="path"></param>
+        public void WriteOutputFile(string path)
+        {
+            using (StreamWriter writer = new StreamWriter(path))
+            {
+                OutputFileLine output = new OutputFileLine(this);
+                writer.WriteLine(output);
+
+                foreach(Tile tile in this.Tiles)
+                {
+                    if (tile.Type == "M" || tile.TreasuresNb != 0)
+                    {
+                        output = new OutputFileLine(tile);
+                        writer.WriteLine(output);
+                    }
+                }
+
+                foreach(Adventurer adventurer in this.Adventurers)
+                {
+                    output = new OutputFileLine(adventurer);
+                    writer.WriteLine(output);
+                }
+            }
+
+            Console.WriteLine("Fin de l'écriture du fichier.");
+        }
     }
 }

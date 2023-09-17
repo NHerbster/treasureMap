@@ -73,5 +73,14 @@ namespace treasureMap
         {
             this.hasAdventurer = hasAdventurer;
         }
+
+        /// <summary>
+        /// Indique si la case est accessible pour un aventurier. (Ne doit pas avoir d'aventurier et le type doit être différent de M)
+        /// </summary>
+        /// <returns></returns>
+        public bool IsAvailable()
+        {
+            return !this.hasAdventurer && this.type != "M";
+        }
     }
 }

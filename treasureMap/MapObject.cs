@@ -12,7 +12,7 @@ namespace treasureMap
         /// <summary>
         /// Position horizontale de la case
         /// </summary>
-        private int widthPos { get; set; }
+        internal int widthPos { get; set; }
 
         /// <summary>
         /// Accesseur de la position horizontale de la case
@@ -22,7 +22,7 @@ namespace treasureMap
         /// <summary>
         /// Position verticale de la case
         /// </summary>
-        private int heightPos { get; set; }
+        internal int heightPos { get; set; }
 
         /// <summary>
         /// Accesseur de la position verticale de la case
