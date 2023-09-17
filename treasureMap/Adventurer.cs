@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace treasureMap
+﻿namespace treasureMap
 {
     /// <summary>
     /// Classe décrivant un aventurier
@@ -57,6 +51,10 @@ namespace treasureMap
         }
         #endregion
 
+        /// <summary>
+        /// Modifie l'orientation de l'aventurier
+        /// </summary>
+        /// <param name="direction"></param>
         public void RotateAdventurer(char direction)
         {
             switch (this.orientation) 

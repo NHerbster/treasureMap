@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace treasureMap
+﻿namespace treasureMap
 {
+    /// <summary>
+    /// Classe mère définissant les différents objets présents sur la carte
+    /// </summary>
     internal class MapObject
     {
         #region Properties

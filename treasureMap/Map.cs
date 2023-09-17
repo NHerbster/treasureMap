@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.ExceptionServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace treasureMap
 {
@@ -69,6 +64,13 @@ namespace treasureMap
             }
         }
 
+        /// <summary>
+        /// Récupère une case selon les coordonnées
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <returns></returns>
+        /// <exception cref="NullReferenceException"></exception>
         public Tile GetTileByPos(int width, int height)
         {
             Tile tile = Tiles.FirstOrDefault(tile => tile.WidthPos == width && tile.HeightPos == height);
@@ -79,6 +81,10 @@ namespace treasureMap
             return tile;
         }
 
+        /// <summary>
+        /// Ajoute un aventurier sur la carte
+        /// </summary>
+        /// <param name="adventurer"></param>
         public void AddAdventurer(Adventurer adventurer)
         {
             this.Adventurers.Add(adventurer);

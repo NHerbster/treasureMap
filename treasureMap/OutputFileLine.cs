@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace treasureMap
+﻿namespace treasureMap
 {
     /// <summary>
     /// Classe décrivant le format d'une ligne du fichier de sortie
@@ -13,16 +6,34 @@ namespace treasureMap
     internal class OutputFileLine
     {
         #region Properties
+        /// <summary>
+        /// Type de l'objet
+        /// </summary>
         private string Type { get; set; }
 
+        /// <summary>
+        /// Position horizontale
+        /// </summary>
         private int Width { get; set; }
 
+        /// <summary>
+        /// Position verticale
+        /// </summary>
         private int Height { get; set; }
 
+        /// <summary>
+        /// Nombre de trésors
+        /// </summary>
         private int NbTreasures { get; set; }
 
+        /// <summary>
+        /// Orientation
+        /// </summary>
         private string Orientation { get; set; }
 
+        /// <summary>
+        /// Nom
+        /// </summary>
         private string Name { get; set; }
         #endregion
 
@@ -80,6 +91,10 @@ namespace treasureMap
         }
         #endregion
 
+        /// <summary>
+        /// Redéfinition de la méthode ToString
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             string line = string.Empty;

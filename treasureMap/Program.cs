@@ -1,10 +1,9 @@
 ﻿using treasureMap;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 internal class Program
 {
     /// <summary>
-    /// Classen principale du programme
+    /// Classe principale du programme
     /// </summary>
     /// <param name="args"></param>
     private static void Main(string[] args)
